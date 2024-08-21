@@ -26,8 +26,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pyver: ["3.11", "3.12"]
-        cuda: ["12.1.1", "12.4.1"]
+        pyver: ["3.12"]
+        cuda: ["12.4.1"]
         torchver: ["2.4.0"]
     defaults:
       run:
@@ -88,7 +88,7 @@ jobs:
           $env:CUDA_PATH = $env:CONDA_PREFIX
           $env:CUDA_HOME = $env:CONDA_PREFIX
           
-          $env:MAX_JOBS = '1'
+          $env:MAX_JOBS = '4'
           $env:FLASH_ATTENTION_FORCE_BUILD = 'TRUE'
           $env:FLASH_ATTENTION_FORCE_CXX11_ABI = 'FALSE'
           $env:BUILD_TARGET = "cuda"
