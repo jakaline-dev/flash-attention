@@ -70,7 +70,7 @@ jobs:
           if (!(mamba list cuda)[-1].contains('cuda')) {sleep -s 10; mamba install -y 'cuda' $cudaVersion}
           if (!(mamba list cuda)[-1].contains('cuda')) {throw 'CUDA Toolkit failed to install!'}
           
-          python -m pip install --upgrade build setuptools wheel packaging ninja torch==${{ matrix.torchver }} psutil --extra-index-url "https://download.pytorch.org/whl/cu121"
+          python -m pip install --upgrade build setuptools wheel packaging ninja torch==${{ matrix.torchver }} psutil --extra-index-url "https://download.pytorch.org/whl/cu124"
 
       - name: Build Wheel
         id: build-wheel
@@ -88,7 +88,7 @@ jobs:
           $env:CUDA_PATH = $env:CONDA_PREFIX
           $env:CUDA_HOME = $env:CONDA_PREFIX
           
-          $env:MAX_JOBS = '2'
+          $env:MAX_JOBS = '1'
           $env:FLASH_ATTENTION_FORCE_BUILD = 'TRUE'
           $env:FLASH_ATTENTION_FORCE_CXX11_ABI = 'FALSE'
           $env:BUILD_TARGET = "cuda"
